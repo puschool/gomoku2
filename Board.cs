@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+
 namespace 五子棋
 {
     class Board
+    internal class Board
     {
         public bool CanBePlaced(int x, int y)
         {

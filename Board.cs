@@ -17,21 +17,35 @@ namespace 五子棋
         public bool CanBePlaced(int x, int y)
         {
             // TODO: 找出最近的節點(Node)
-
+            Point nodeld = FindTheClosetNode(x,y);
             // TODO: 如果沒有的話，回傳false
-
+            if(nodeld == NO_MATCH_NODE)
+            {
+                return false;
+            }
             // TODO: 如果有的話，檢查是否已經旗子存在
+            return true;
         }
         private Point FindTheClosetNode(int x, int y)
         {
             int nodeldX = FindTheClosetNode(x);
             if(nodeldX == -1)
             {
-                return
+                return NO_MATCH_NODE;
             }
+            int nodeldY = FindTheClosetNode(y);
+            if(nodeldY == -1) 
+            {
+                return NO_MATCH_NODE;
+            }
+            return new Point(nodeldX, nodeldY);
         }
         private int FindTheClosetNode(int pos)
         {
+            if(pos < OFFSET - NODE_RADIUS)
+            {
+                return -1;
+            }
             pos -= OFFSET;
 
             int quotient = pos / NODE_DISTANCE;

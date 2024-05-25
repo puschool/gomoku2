@@ -32,13 +32,16 @@
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(9F, 19F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.board;
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(761, 686);
+            ClientSize = new Size(592, 542);
+            Margin = new Padding(2, 2, 2, 2);
             Name = "Form1";
             Text = "五子棋";
+            MouseDown += Form1_MouseDown;
+            MouseMove += Form1_MouseMove;
             ResumeLayout(false);
         }
 

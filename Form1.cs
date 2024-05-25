@@ -3,26 +3,25 @@ namespace 五子棋
     public partial class Form1 : Form
     {
         private Board board = new Board();
-        private bool isblack = true;
+        private PieceType nextPieceType = PieceType.BLACK;
         public Form1()
         {
             InitializeComponent();
         }
         private void Form1_MouseDown(object sender, MouseEventArgs e)
         {
-            if (isblack)
+            Piece piece = board.PlaceAPiece(e.X, e.Y, PieceType.BLACK);
+            if (piece != null)
             {
-                Piece piece = board.PlaceAPiece(e.X, e.Y,PieceType.BLACK);
-                if (piece != null)
+                this.Controls.Add(piece);
+                if(nextPieceType == PieceType.BLACK)
                 {
-                    this.Controls.Add(piece);
-                    isblack = false;
+                    nextPieceType = PieceType.WHITE;
                 }
-            }
-            else
-            {
-                this.Controls.Add(new WhitePiece(e.X, e.Y));
-                isblack = true;
+                else if(nextPieceType == PieceType.WHITE)
+                {
+                    nextPieceType= PieceType.BLACK;
+                }
             }
         }
 

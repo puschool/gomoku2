@@ -36,8 +36,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.board;
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(592, 542);
-            Margin = new Padding(2, 2, 2, 2);
+            ClientSize = new Size(752, 743);
+            Margin = new Padding(2);
             Name = "Form1";
             Text = "五子棋";
             MouseDown += Form1_MouseDown;

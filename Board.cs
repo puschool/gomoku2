@@ -25,7 +25,7 @@ namespace 五子棋
             {
                 return false;
             }
-            // 如果有的話，檢查是否已經旗子存在
+            // 如果有的話，檢查是否已經棋子存在
             if (pieces[nodeId.X, nodeId.Y] != null)
             {
                 return false;
@@ -41,12 +41,12 @@ namespace 五子棋
             {
                 return null;
             }
-            // 如果有的話，檢查是否已經旗子存在
+            // 如果有的話，檢查是否已經棋子存在
             if (pieces[nodeId.X,nodeId.Y] != null)
             {
                 return null;
             }
-            // 根據type 產生對應的旗子
+            // 根據type 產生對應的棋子
             if(type == PieceType.BLACK)
             {
                 pieces[nodeId.X,nodeId.Y] = new BlackPiece(x,y);
@@ -86,7 +86,7 @@ namespace 五子棋
             {
                 return quotient;
             }
-            else if(remainder >= NODE_DISTANCE - NODE_RADIUS)
+            else if(remainder >=  NODE_DISTANCE - NODE_RADIUS )
             {
                 return quotient + 1;
             }

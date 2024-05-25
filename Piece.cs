@@ -10,11 +10,13 @@ namespace 五子棋
 {
     abstract class Piece : PictureBox
     {
+        private static readonly int IMAGE_WIDTH = 50;
+
         public Piece(int x, int y)
         {
             this.BackColor = Color.Transparent;
-            this.Location = new Point(x, y);//建立一個點
-            this.Size = new Size(50, 50);
+            this.Location = new Point(x - IMAGE_WIDTH /2 , y- IMAGE_WIDTH / 2);//建立一個點
+            this.Size = new Size(IMAGE_WIDTH, IMAGE_WIDTH);
 
         }
     }

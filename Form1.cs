@@ -12,8 +12,12 @@ namespace 五子棋
         {
             if (isblack)
             {
-                this.Controls.Add(new BlackPiece(e.X, e.Y));
-                isblack = false;
+                Piece piece = board.PlaceAPiece(e.X, e.Y,PieceType.BLACK);
+                if (piece != null)
+                {
+                    this.Controls.Add(piece);
+                    isblack = false;
+                }
             }
             else
             {

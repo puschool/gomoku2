@@ -24,9 +24,5 @@ namespace 五子棋
         {
 
         }
-        private int FindTheClosetNode(int pos)
-        {
-
-        }
     }
 }

@@ -32,9 +32,14 @@ namespace Gomoku
 
                 // 交換選手
                 if (currentPlayer == PieceType.BLACK)
+                {
                     currentPlayer = PieceType.WHITE;
+                }
                 else if (currentPlayer == PieceType.WHITE)
+                {
                     currentPlayer = PieceType.BLACK;
+                }
+                    
 
                 return piece;
             }

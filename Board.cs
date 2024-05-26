@@ -10,12 +10,22 @@ namespace 五子棋
     class Board 
     {
         private static readonly Point NO_MATCH_NODE = new Point(-1,-1);
+        public static readonly int NODE_COUNT = 9;
 
         private static readonly int OFFSET = 75;
         private static readonly int NODE_RADIUS = 10;
         private static readonly int NODE_DISTANCE = 75;
 
-        private Piece[,] pieces = new Piece[9, 9];
+        private Piece[,] pieces = new Piece[NODE_COUNT, NODE_COUNT];
+        private Point lastPlacedNode = NO_MATCH_NODE;
+        public Point LastPlacedNode { get { return lastPlacedNode; } }
+        public PieceType GetPieceType(int nodeIdX, int nodeIdY)
+        {
+            if (pieces[nodeIdX, nodeIdY] == null)
+                return PieceType.NONE;
+            else
+                return pieces[nodeIdX, nodeIdY].GetPieceType();
+        }
         public bool CanBePlaced(int x, int y)
         {
             // 找出最近的節點(Node)
@@ -55,17 +65,20 @@ namespace 五子棋
             {
                 pieces[nodeId.X, nodeId.Y] = new WhitePiece(x, y);
             }
+            // 紀錄最後下棋子的位置
+            lastPlacedNode = nodeId;
+
             return pieces[nodeId.X, nodeId.Y];
         }
         private Point FindTheClosetNode(int x, int y)
         {
             int nodeIdX = FindTheClosetNode(x);
-            if(nodeIdX == -1)
+            if(nodeIdX == -1 || nodeIdX >= NODE_COUNT)
             {
                 return NO_MATCH_NODE;
             }
             int nodeIdY = FindTheClosetNode(y);
-            if(nodeIdY == -1) 
+            if(nodeIdY == -1 || nodeIdY >= NODE_COUNT) 
             {
                 return NO_MATCH_NODE;
             }

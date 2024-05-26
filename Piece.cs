@@ -19,5 +19,6 @@ namespace 五子棋
             this.Size = new Size(IMAGE_WIDTH, IMAGE_WIDTH);
 
         }
+        public abstract PieceType GetPieceType();
     }
 }

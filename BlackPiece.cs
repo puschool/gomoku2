@@ -12,5 +12,9 @@ namespace 五子棋
         {
             this.Image = Properties.Resources.black;
         }
+        public override PieceType GetPieceType()
+        {
+            return PieceType.BLACK;
+        }
     }
 }

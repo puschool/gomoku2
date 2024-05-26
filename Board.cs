@@ -9,7 +9,7 @@ namespace 五子棋
 {
     class Board 
     {
-        private static readonly Point NO_MATCH_NODE = new Point(-1,-1);
+        private static readonly Point NO_MATCH_NODE = new Point(-1,-1);//用一個Point資料代表不存在的點(要使用不會用到的點)
         public static readonly int NODE_COUNT = 9;  //9*9的棋盤陣列
 
         private static readonly int OFFSET = 75; // 偏移植
@@ -57,18 +57,27 @@ namespace 五子棋
                 return null;
             }
             // 根據type 產生對應的棋子
-            if(type == PieceType.BLACK)
+            Point formPos = convertToFormPosition(nodeId);
+            if (type == PieceType.BLACK)
             {
-                pieces[nodeId.X,nodeId.Y] = new BlackPiece(x,y);
+                pieces[nodeId.X,nodeId.Y] = new BlackPiece(formPos.X, formPos.Y);
             }
             else if (type == PieceType.WHITE)
             {
-                pieces[nodeId.X, nodeId.Y] = new WhitePiece(x, y);
+                pieces[nodeId.X, nodeId.Y] = new WhitePiece(formPos.X, formPos.Y);
             }
             // 紀錄最後下棋子的位置
             lastPlacedNode = nodeId;
 
             return pieces[nodeId.X, nodeId.Y];
+
+        }
+        private Point convertToFormPosition(Point nodeId)//nodeId轉換成實際座標位置
+        {
+            Point formPoisition = new Point();//先開個空白的
+            formPoisition.X = nodeId.X * NODE_DISTANCE + OFFSET;
+            formPoisition.Y = nodeId.Y * NODE_DISTANCE + OFFSET;
+            return formPoisition;
         }
         private Point FindTheClosetNode(int x, int y)
         {

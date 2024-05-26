@@ -9,6 +9,7 @@ namespace 五子棋
 
         public Form1()
         {
+            MessageBox.Show("本遊戲為五子棋使用9*9棋盤，操作方式為黑棋白棋各自輪流操作，直到贏者出現，即結束遊戲!!", "遊戲開始，本遊戲為普通級，不限年齡皆可參與~");
             InitializeComponent();
         }
 

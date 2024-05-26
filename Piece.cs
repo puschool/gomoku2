@@ -14,9 +14,9 @@ namespace 五子棋
 
         public Piece(int x, int y)
         {
-            this.BackColor = Color.Transparent;
-            this.Location = new Point(x - IMAGE_WIDTH /2 , y- IMAGE_WIDTH / 2);//建立一個點
-            this.Size = new Size(IMAGE_WIDTH, IMAGE_WIDTH);
+            this.BackColor = Color.Transparent;  // 棋子的背景透明
+            this.Location = new Point(x - IMAGE_WIDTH / 2 , y - IMAGE_WIDTH / 2);//建立一個棋子的點
+            this.Size = new Size(IMAGE_WIDTH, IMAGE_WIDTH);  // 棋子的大小
 
         }
         public abstract PieceType GetPieceType();

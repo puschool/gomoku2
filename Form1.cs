@@ -4,7 +4,7 @@ namespace 五子棋
 {
     public partial class Form1 : Form
     {
-       
+
         private Game game = new Game();
 
         public Form1()
@@ -21,14 +21,14 @@ namespace 五子棋
                 // 檢查是否有人獲勝
                 if (game.Winner == PieceType.BLACK)
                 {
-                   MessageBox.Show("黑色獲勝","遊戲結束");
-                    this.Close();
+                    MessageBox.Show("黑棋獲勝", "遊戲結束");
+                    this.Close(); //關閉視窗
 
                 }
                 else if (game.Winner == PieceType.WHITE)
                 {
-                    MessageBox.Show("白色獲勝", "遊戲結束");
-                    this.Close();
+                    MessageBox.Show("白棋獲勝", "遊戲結束");
+                    this.Close();  //關閉視窗
 
                 }
             }
@@ -38,11 +38,11 @@ namespace 五子棋
         {
             if (game.CanBePlaced(e.X, e.Y))
             {
-                this.Cursor = Cursors.Hand;
+                this.Cursor = Cursors.Hand;  // 游標變成手
             }
             else
             {
-                this.Cursor = Cursors.Default;
+                this.Cursor = Cursors.Default;// 游標變成指標箭頭
             }
         }
     }

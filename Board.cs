@@ -10,13 +10,13 @@ namespace 五子棋
     class Board 
     {
         private static readonly Point NO_MATCH_NODE = new Point(-1,-1);
-        public static readonly int NODE_COUNT = 9;
+        public static readonly int NODE_COUNT = 9;  //9*9的棋盤陣列
 
-        private static readonly int OFFSET = 75;
-        private static readonly int NODE_RADIUS = 10;
-        private static readonly int NODE_DISTANCE = 75;
+        private static readonly int OFFSET = 75; // 偏移植
+        private static readonly int NODE_RADIUS = 10; // 圓半徑
+        private static readonly int NODE_DISTANCE = 75; // 節點距離
 
-        private Piece[,] pieces = new Piece[NODE_COUNT, NODE_COUNT];
+        private Piece[,] pieces = new Piece[NODE_COUNT, NODE_COUNT];  //棋盤陣列
         private Point lastPlacedNode = NO_MATCH_NODE;
         public Point LastPlacedNode { get { return lastPlacedNode; } }
         public PieceType GetPieceType(int nodeIdX, int nodeIdY)
@@ -73,12 +73,12 @@ namespace 五子棋
         private Point FindTheClosetNode(int x, int y)
         {
             int nodeIdX = FindTheClosetNode(x);
-            if(nodeIdX == -1 || nodeIdX >= NODE_COUNT)
+            if(nodeIdX == -1 || nodeIdX >= NODE_COUNT)  // 避免超出陣列邊界
             {
                 return NO_MATCH_NODE;
             }
             int nodeIdY = FindTheClosetNode(y);
-            if(nodeIdY == -1 || nodeIdY >= NODE_COUNT) 
+            if(nodeIdY == -1 || nodeIdY >= NODE_COUNT) // 避免超出陣列邊界
             {
                 return NO_MATCH_NODE;
             }

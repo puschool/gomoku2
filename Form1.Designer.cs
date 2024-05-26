@@ -39,7 +39,7 @@
             ClientSize = new Size(752, 743);
             Margin = new Padding(2);
             Name = "Form1";
-            Text = "五子棋";
+            Text = "五子棋--資傳一A 程式設計專題(三人)";
             MouseDown += Form1_MouseDown;
             MouseMove += Form1_MouseMove;
             ResumeLayout(false);

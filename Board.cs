@@ -15,7 +15,7 @@ namespace 五子棋
         private static readonly int OFFSET = 75; // 偏移植
         private static readonly int NODE_RADIUS = 10; // 圓半徑
         private static readonly int NODE_DISTANCE = 75; // 節點距離
-
+        //使用二維陣列紀錄棋子
         private Piece[,] pieces = new Piece[NODE_COUNT, NODE_COUNT];  //棋盤陣列
         private Point lastPlacedNode = NO_MATCH_NODE;
         public Point LastPlacedNode { get { return lastPlacedNode; } }
@@ -26,30 +26,31 @@ namespace 五子棋
             else
                 return pieces[nodeIdX, nodeIdY].GetPieceType();
         }
+        //判斷這個位置可不可以放棋子
         public bool CanBePlaced(int x, int y)
         {
             // 找出最近的節點(Node)
-            Point nodeId = FindTheClosetNode(x,y);
+            Point nodeId = FindTheClosetNode(x,y); //(nodeId)一個節點的座標位置
             // 如果沒有的話，回傳false
-            if(nodeId == NO_MATCH_NODE)
+            if (nodeId == NO_MATCH_NODE)
             {
                 return false;
             }
             // 如果有的話，檢查是否已經棋子存在
-            if (pieces[nodeId.X, nodeId.Y] != null)
+            if (pieces[nodeId.X, nodeId.Y] != null) //預設每一個都是=null
             {
-                return false;
+                return false; //回傳已經有棋子存在
             }
             return true;
         }
         public Piece PlaceAPiece(int x, int y,PieceType type)
         {
             // 找出最近的節點(Node)
-            Point nodeId = FindTheClosetNode(x, y);
+            Point nodeId = FindTheClosetNode(x, y); //(nodeId)一個節點的座標位置。//nodeId是第幾個交叉點
             // 如果沒有的話，回傳false
             if (nodeId == NO_MATCH_NODE)
             {
-                return null;
+                return null; //return Piece的值，Piece是一個class，要指向 沒有任何一個物件
             }
             // 如果有的話，檢查是否已經棋子存在
             if (pieces[nodeId.X,nodeId.Y] != null)
@@ -79,7 +80,7 @@ namespace 五子棋
             formPoisition.Y = nodeId.Y * NODE_DISTANCE + OFFSET;
             return formPoisition;
         }
-        private Point FindTheClosetNode(int x, int y)
+        private Point FindTheClosetNode(int x, int y) //Point 一個點的位置(座標)
         {
             int nodeIdX = FindTheClosetNode(x);
             if(nodeIdX == -1 || nodeIdX >= NODE_COUNT)  // 避免超出陣列邊界
@@ -91,30 +92,30 @@ namespace 五子棋
             {
                 return NO_MATCH_NODE;
             }
-            return new Point(nodeIdX, nodeIdY);
+            return new Point(nodeIdX, nodeIdY); //有的話Return一個Point
         }
-        private int FindTheClosetNode(int pos)
+        private int FindTheClosetNode(int pos) //對一條線上的座標點判斷
         {
-            if(pos < OFFSET - NODE_RADIUS)
+            if(pos < OFFSET - NODE_RADIUS) //讓邊邊不要有手的效果
             {
                 return -1;
             }
             pos -= OFFSET;
 
-            int quotient = pos / NODE_DISTANCE;
-            int remainder = pos % NODE_DISTANCE;
-            
-            if(remainder <= NODE_RADIUS)
+            int quotient = pos / NODE_DISTANCE; //商數:判斷 點的位置 左邊的點是誰
+            int remainder = pos % NODE_DISTANCE; //餘數:判斷點的位置範圍是否界在碰撞箱(R)裡面
+
+            if (remainder <= NODE_RADIUS) // 屬於左邊點的範圍
             {
                 return quotient;
             }
-            else if(remainder >=  NODE_DISTANCE - NODE_RADIUS )
+            else if(remainder >=  NODE_DISTANCE - NODE_RADIUS) //屬於右邊的範圍 若大於等於(全部-右邊碰撞箱)
             {
                 return quotient + 1;
             }
             else
             { 
-                return -1;
+                return -1; //沒有點符合
             }
         }
     }

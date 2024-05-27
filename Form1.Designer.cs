@@ -32,12 +32,11 @@
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(9F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.board;
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(752, 743);
-            Margin = new Padding(2);
+            ClientSize = new Size(750, 735);
             Name = "Form1";
             Text = "五子棋--資傳一A 程式設計專題(三人)";
             MouseDown += Form1_MouseDown;

@@ -38,7 +38,7 @@ namespace 五子棋
             }
         }
 
-        private void Form1_MouseMove(object sender, MouseEventArgs e)
+        private void Form1_MouseMove(object sender, MouseEventArgs e) //滑鼠移動時，需要做甚麼事件(會到這個事件)
         {
             if (game.CanBePlaced(e.X, e.Y))
             {

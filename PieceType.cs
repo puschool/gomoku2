@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace 五子棋
 {
-    enum PieceType
+    enum PieceType //預先定義好一些類型的資料
     {
-        BLACK, WHITE, NONE
+        BLACK, WHITE, NONE //
     }
 }

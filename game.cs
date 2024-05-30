@@ -10,7 +10,7 @@ namespace Gomoku
     class Game
     {
 
-        private Board board = new Board();
+        private Board board = new Board(); //呼叫一個物件，才能使用Board的功能
 
         private PieceType currentPlayer = PieceType.BLACK;
 
